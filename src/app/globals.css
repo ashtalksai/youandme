@@ -1,26 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Backgrounds */
+  --bg-primary: #0f1419;
+  --bg-secondary: #1a2129;
+  --bg-surface: #242d38;
+  
+  /* Text */
+  --text-primary: #f5f5f0;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  
+  /* Accent Colors (Jewel Tones) */
+  --accent-burgundy: #7f263a;
+  --accent-forest: #2d4a3e;
+  --accent-gold: #c9a961;
+  
+  /* Functional */
+  --border: rgba(255,255,255,0.1);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
+
+/* Vibe-specific accent overrides */
+.vibe-romantic { --accent-active: var(--accent-burgundy); }
+.vibe-adventurous { --accent-active: var(--accent-forest); }
+.vibe-cozy { --accent-active: #d4a86a; }
