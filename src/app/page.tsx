@@ -7,63 +7,30 @@ const vibes = [
 ];
 
 const featuredExperiences = [
-  { id: 1, slug: "rooftop-dinner", title: "Private Rooftop Dinner", operator: "Chef Marcus", vibe: "romantic", price: 180, image: "🌆" },
+  { id: 1, slug: "private-rooftop-dinner", title: "Private Rooftop Dinner", operator: "Chef Marcus", vibe: "romantic", price: 180, image: "🌆" },
   { id: 2, slug: "midnight-kayaking", title: "Midnight Kayaking", operator: "Harbor Adventures", vibe: "adventurous", price: 95, image: "🛶" },
   { id: 3, slug: "rooftop-pottery", title: "Rooftop Pottery", operator: "Clay & Co", vibe: "creative", price: 120, image: "🎨" },
-  { id: 4, slug: "comedy-night", title: "Comedy Date Night", operator: "Laugh Factory", vibe: "playful", price: 75, image: "🎭" },
-  { id: 5, slug: "wine-tasting", title: "Sunset Wine Tasting", operator: "Valley Vineyards", vibe: "romantic", price: 150, image: "🍷" },
-  { id: 6, slug: "escape-room", title: "Escape Room Challenge", operator: "Puzzle Masters", vibe: "competitive", price: 85, image: "🔐" },
-];
-
-const howItWorks = [
-  {
-    icon: "🔍",
-    title: "Browse by vibe",
-    description: "Not categories. Filter by how you want to FEEL: competitive, romantic, adventurous.",
-  },
-  {
-    icon: "💫",
-    title: "Meet the operator",
-    description: "Every experience comes with a story. Know who's creating your night before you book.",
-  },
-  {
-    icon: "📅",
-    title: "Book instantly",
-    description: "Pick your date and time. Secure payment. Confirmation in seconds.",
-  },
-  {
-    icon: "✨",
-    title: "Make memories",
-    description: "Show up, enjoy the experience, and finally have something to talk about besides Netflix.",
-  },
-];
-
-const pricingTiers = [
-  { range: "$50-100", label: "Casual", examples: "Comedy shows, escape rooms, axe throwing" },
-  { range: "$100-150", label: "Special", examples: "Cooking classes, wine tastings, pottery" },
-  { range: "$150-250", label: "Premium", examples: "Private dinners, stargazing, curated adventures" },
+  { id: 4, slug: "comedy-date-night", title: "Comedy Date Night", operator: "Laugh Factory", vibe: "playful", price: 75, image: "🎭" },
+  { id: 5, slug: "sunset-wine-tasting", title: "Sunset Wine Tasting", operator: "Valley Vineyards", vibe: "romantic", price: 150, image: "🍷" },
+  { id: 6, slug: "escape-room-challenge", title: "Escape Room Challenge", operator: "Puzzle Masters", vibe: "competitive", price: 85, image: "🔐" },
 ];
 
 const faqs = [
   {
-    question: "How are experiences curated?",
-    answer: "We personally visit and test every experience before listing it. Our team vets operators for quality, safety, and that special something that makes a date memorable.",
+    q: "How do I book an experience?",
+    a: "Browse our curated experiences, select one that matches your vibe, pick a date and time, and book instantly. You'll receive confirmation and all the details within minutes.",
   },
   {
-    question: "Can I cancel or reschedule?",
-    answer: "Yes! Free cancellation up to 48 hours before your booking. Rescheduling is always free and easy through your confirmation email.",
+    q: "Can I cancel or reschedule?",
+    a: "Yes! You can cancel or reschedule for free up to 48 hours before your experience. After that, policies vary by operator.",
   },
   {
-    question: "What if I have dietary restrictions?",
-    answer: "All food experiences accommodate dietary needs. Just let us know during booking and we'll coordinate with the operator.",
+    q: "Are experiences private or shared with others?",
+    a: "Most of our experiences are private—just for you and your partner. Some group experiences (like comedy nights) will be noted in the listing.",
   },
   {
-    question: "Are experiences available for groups?",
-    answer: "Most experiences are designed for couples (2 people), but many can accommodate double dates or small groups. Check each listing for details.",
-  },
-  {
-    question: "How does payment work?",
-    answer: "Pay securely through our platform. We hold your payment until after your experience, so operators are motivated to deliver an amazing night.",
+    q: "What if I have dietary restrictions?",
+    a: "Just note them when booking. Our operators are experienced in accommodating dietary needs and will customize your experience.",
   },
 ];
 
@@ -84,7 +51,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* 1. Hero Section */}
+      {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -102,12 +69,11 @@ export default function Home() {
               {/* Vibe Filter */}
               <div className="flex flex-wrap gap-3 mb-8">
                 {vibes.map((vibe) => (
-                  <button
-                    key={vibe.id}
-                    className="px-4 py-2 rounded-full border border-[#c9a961] text-[#c9a961] text-sm hover:bg-[#c9a961]/10 transition-colors"
-                  >
-                    {vibe.emoji} {vibe.name}
-                  </button>
+                  <Link key={vibe.id} href={`/experiences?vibe=${vibe.id}`}>
+                    <button className="px-4 py-2 rounded-full border border-[#c9a961] text-[#c9a961] text-sm hover:bg-[#c9a961]/10 transition-colors">
+                      {vibe.emoji} {vibe.name}
+                    </button>
+                  </Link>
                 ))}
               </div>
 
@@ -140,21 +106,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Problem Statement */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#1a2129]">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Problem Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-serif text-3xl sm:text-4xl text-[#f5f5f0] mb-6">
-            Tired of the same date routine?
+            Tired of the same Italian place?
           </h2>
-          <p className="text-xl text-[#9ca3af] max-w-2xl mx-auto">
-            Open Google. Scroll through the same restaurants. End up at the familiar Italian place. Again.
-            Sound familiar? There&apos;s more out there — you just need someone to show you.
+          <p className="text-lg text-[#9ca3af] mb-8">
+            You love each other. You want to spend quality time together. But somewhere between work, 
+            life, and decision fatigue, &ldquo;date night&rdquo; became that restaurant you always go to 
+            because you can&apos;t think of anything else.
+          </p>
+          <p className="text-[#c9a961] font-medium">
+            It doesn&apos;t have to be this way.
           </p>
         </div>
       </section>
 
-      {/* 3. Featured Experiences */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      {/* Featured Experiences */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#1a2129]">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-serif text-3xl text-[#f5f5f0] mb-2">Featured experiences</h2>
           <p className="text-[#9ca3af] mb-12">Hand-picked by our team</p>
@@ -183,33 +153,47 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          
-          <div className="text-center mt-12">
-            <Link href="/experiences" className="text-[#c9a961] hover:text-[#f5f5f0] transition-colors">
-              See all experiences →
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* 4. How It Works */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#1a2129]">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-serif text-3xl text-[#f5f5f0] mb-12 text-center">How it works</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {howItWorks.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl mb-4">{step.icon}</div>
-                <h3 className="font-serif text-xl text-[#f5f5f0] mb-2">{step.title}</h3>
-                <p className="text-[#9ca3af] text-sm">{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Operator Spotlight */}
+      {/* How It Works */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-serif text-3xl text-[#f5f5f0] mb-12 text-center">How it works</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-[#7f263a]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl">💫</span>
+              </div>
+              <h3 className="font-serif text-xl text-[#f5f5f0] mb-3">Browse by vibe</h3>
+              <p className="text-[#9ca3af]">
+                Not categories. Vibes. Filter by how you want to feel: &ldquo;Make them laugh,&rdquo; &ldquo;Get competitive,&rdquo; or &ldquo;Just be together.&rdquo;
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-[#2d4a3e]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl">📅</span>
+              </div>
+              <h3 className="font-serif text-xl text-[#f5f5f0] mb-3">Book instantly</h3>
+              <p className="text-[#9ca3af]">
+                Pick your date and time. We handle everything—no back-and-forth, no phone calls, no planning stress.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-[#c9a961]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl">✨</span>
+              </div>
+              <h3 className="font-serif text-xl text-[#f5f5f0] mb-3">Make memories</h3>
+              <p className="text-[#9ca3af]">
+                Show up and enjoy. Every experience is personally curated to deliver something unforgettable.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Operator Spotlight */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#1a2129]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-serif text-3xl text-[#f5f5f0] mb-12">Meet our operators</h2>
           <div className="bg-[#242d38] rounded-sm p-8 border border-white/5">
@@ -229,57 +213,66 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Pricing Overview */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#1a2129]">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-serif text-3xl text-[#f5f5f0] mb-4 text-center">Experiences for every budget</h2>
-          <p className="text-[#9ca3af] text-center mb-12">No subscription. Pay only when you book.</p>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {pricingTiers.map((tier) => (
-              <div key={tier.label} className="bg-[#242d38] p-6 rounded-sm border border-white/5 text-center">
-                <div className="text-[#c9a961] font-mono text-2xl mb-2">{tier.range}</div>
-                <div className="text-[#f5f5f0] font-serif text-xl mb-3">{tier.label}</div>
-                <p className="text-[#9ca3af] text-sm">{tier.examples}</p>
-              </div>
-            ))}
+      {/* Pricing Teaser */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="font-serif text-3xl text-[#f5f5f0] mb-6">Simple, transparent pricing</h2>
+          <p className="text-[#9ca3af] mb-8 max-w-2xl mx-auto">
+            No subscription fees. No hidden charges. You only pay for the experiences you book.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <div className="bg-[#1a2129] border border-white/10 rounded-sm p-6">
+              <div className="text-[#c9a961] font-mono text-sm mb-2">Budget-friendly</div>
+              <div className="font-serif text-3xl text-[#f5f5f0] mb-2">$65-95</div>
+              <div className="text-[#6b7280] text-sm">Escape rooms, comedy nights, pottery</div>
+            </div>
+            <div className="bg-[#1a2129] border border-[#7f263a]/50 rounded-sm p-6">
+              <div className="text-[#c9a961] font-mono text-sm mb-2">Most popular</div>
+              <div className="font-serif text-3xl text-[#f5f5f0] mb-2">$100-150</div>
+              <div className="text-[#6b7280] text-sm">Wine tastings, cooking classes, kayaking</div>
+            </div>
+            <div className="bg-[#1a2129] border border-white/10 rounded-sm p-6">
+              <div className="text-[#c9a961] font-mono text-sm mb-2">Premium</div>
+              <div className="font-serif text-3xl text-[#f5f5f0] mb-2">$150+</div>
+              <div className="text-[#6b7280] text-sm">Private dinners, exclusive experiences</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 7. FAQ */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      {/* FAQ */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#1a2129]">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-serif text-3xl text-[#f5f5f0] mb-12 text-center">Common questions</h2>
+          <h2 className="font-serif text-3xl text-[#f5f5f0] mb-12 text-center">Frequently asked questions</h2>
           <div className="space-y-6">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-[#1a2129] p-6 rounded-sm border border-white/5">
-                <h3 className="font-serif text-lg text-[#f5f5f0] mb-2">{faq.question}</h3>
-                <p className="text-[#9ca3af]">{faq.answer}</p>
+              <div key={index} className="bg-[#242d38] border border-white/5 rounded-sm p-6">
+                <h3 className="font-medium text-[#f5f5f0] mb-2">{faq.q}</h3>
+                <p className="text-[#9ca3af]">{faq.a}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 8. Final CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#7f263a]/20 to-[#2d4a3e]/20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-serif text-4xl sm:text-5xl text-[#f5f5f0] mb-6">
-            Ready for a better date night?
+      {/* Final CTA */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#f5f5f0] mb-6">
+            Ready to make tonight unforgettable?
           </h2>
-          <p className="text-xl text-[#9ca3af] mb-8 max-w-2xl mx-auto">
-            Browse curated experiences and book something you&apos;ll actually remember.
+          <p className="text-lg text-[#9ca3af] mb-8">
+            Browse curated experiences and book your next date night in minutes.
           </p>
           <Link href="/experiences">
-            <button className="bg-[#7f263a] hover:bg-[#9d3e4b] text-[#f5f5f0] px-8 py-4 rounded-sm font-mono uppercase tracking-wider text-sm transition-all hover:scale-[1.02]">
+            <button className="bg-[#7f263a] hover:bg-[#9d3e4b] text-[#f5f5f0] px-10 py-4 rounded-sm font-mono uppercase tracking-wider text-sm transition-all hover:scale-[1.02]">
               Explore Experiences
             </button>
           </Link>
         </div>
       </section>
 
-      {/* 9. For Operators CTA */}
+      {/* For Operators CTA */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#1a2129]">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="font-serif text-3xl text-[#f5f5f0] mb-4">Create experiences, not just listings</h2>

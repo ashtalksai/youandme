@@ -13,12 +13,12 @@ const vibes = [
 ];
 
 const experiences = [
-  { id: 1, slug: "rooftop-dinner", title: "Private Rooftop Dinner", operator: "Chef Marcus", vibe: "romantic", price: 180, image: "🌆", description: "3-course meal under the stars" },
+  { id: 1, slug: "private-rooftop-dinner", title: "Private Rooftop Dinner", operator: "Chef Marcus", vibe: "romantic", price: 180, image: "🌆", description: "3-course meal under the stars" },
   { id: 2, slug: "midnight-kayaking", title: "Midnight Kayaking", operator: "Harbor Adventures", vibe: "adventurous", price: 95, image: "🛶", description: "Explore the harbor by moonlight" },
   { id: 3, slug: "rooftop-pottery", title: "Rooftop Pottery Class", operator: "Clay & Co", vibe: "creative", price: 120, image: "🎨", description: "Create together, keep forever" },
-  { id: 4, slug: "comedy-night", title: "Comedy Date Night", operator: "Laugh Factory", vibe: "playful", price: 75, image: "🎭", description: "VIP seats + backstage access" },
-  { id: 5, slug: "wine-tasting", title: "Sunset Wine Tasting", operator: "Valley Vineyards", vibe: "romantic", price: 150, image: "🍷", description: "Private vineyard experience" },
-  { id: 6, slug: "escape-room", title: "Escape Room Challenge", operator: "Puzzle Masters", vibe: "competitive", price: 85, image: "🔐", description: "Race against time together" },
+  { id: 4, slug: "comedy-date-night", title: "Comedy Date Night", operator: "Laugh Factory", vibe: "playful", price: 75, image: "🎭", description: "VIP seats + backstage access" },
+  { id: 5, slug: "sunset-wine-tasting", title: "Sunset Wine Tasting", operator: "Valley Vineyards", vibe: "romantic", price: 150, image: "🍷", description: "Private vineyard experience" },
+  { id: 6, slug: "escape-room-challenge", title: "Escape Room Challenge", operator: "Puzzle Masters", vibe: "competitive", price: 85, image: "🔐", description: "Race against time together" },
   { id: 7, slug: "cooking-class", title: "Couples Cooking Class", operator: "Kitchen Collective", vibe: "creative", price: 130, image: "👨‍🍳", description: "Learn pasta from scratch" },
   { id: 8, slug: "stargazing", title: "Private Stargazing", operator: "Observatory Tours", vibe: "romantic", price: 95, image: "🌌", description: "Telescope + champagne + you" },
   { id: 9, slug: "axe-throwing", title: "Axe Throwing Date", operator: "Urban Lumberjacks", vibe: "competitive", price: 65, image: "🪓", description: "Release some energy together" },
@@ -40,7 +40,7 @@ export default function ExperiencesPage() {
             <Link href="/" className="font-serif text-2xl text-[#f5f5f0]">You&Me</Link>
             <div className="hidden md:flex items-center gap-8">
               <Link href="/experiences" className="text-[#f5f5f0]">Experiences</Link>
-              <a href="#" className="text-[#9ca3af] hover:text-[#f5f5f0] transition-colors">About</a>
+              <Link href="/about" className="text-[#9ca3af] hover:text-[#f5f5f0] transition-colors">About</Link>
               <Link href="/login" className="text-[#9ca3af] hover:text-[#f5f5f0] transition-colors">Log in</Link>
             </div>
           </div>
@@ -110,6 +110,23 @@ export default function ExperiencesPage() {
           )}
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <Link href="/">
+              <span className="font-serif text-xl text-[#f5f5f0]">You&Me</span>
+            </Link>
+            <div className="flex gap-6 text-sm text-[#6b7280]">
+              <Link href="/about" className="hover:text-[#f5f5f0] transition-colors">About</Link>
+              <Link href="/operators" className="hover:text-[#f5f5f0] transition-colors">Become an Operator</Link>
+              <Link href="/login" className="hover:text-[#f5f5f0] transition-colors">Login</Link>
+            </div>
+            <p className="text-sm text-[#6b7280]">© 2026 You&Me</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
