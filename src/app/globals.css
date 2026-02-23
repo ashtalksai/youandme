@@ -23,9 +23,27 @@
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
 }
 
 /* Vibe-specific accent overrides */
 .vibe-romantic { --accent-active: var(--accent-burgundy); }
 .vibe-adventurous { --accent-active: var(--accent-forest); }
 .vibe-cozy { --accent-active: #d4a86a; }
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
